@@ -1,7 +1,7 @@
 export type Entry = {
-  children: number[]
+  children: Number[]
   parentId: Number | null
-  position: number
-  coupletNumber: number
-  depth: number
+  position: Number
+  coupletNumber: string
+  depth: Number
 }

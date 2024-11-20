@@ -1,13 +1,19 @@
-import { makeHttpClient } from '@/utils'
+import { makeRequest } from '@/utils'
 
 export class TaxonWorks {
-  httpClient = makeHttpClient()
+  baseUrl: string
+  projectToken: string
 
   constructor(config) {
-    this.httpClient = makeHttpClient()
+    this.baseUrl = config.baseUrl
+    this.projectToken = config.projectToken
   }
 
-  getDichotomousKey(id: number): Promise {
-    return this.httpClient(`/leads/key/${id}`)
+  getDichotomousKey(id: Number): Promise {
+    return makeRequest(`${this.baseUrl}/leads/key/${id}`, {
+      parameters: {
+        project_token: this.projectToken
+      }
+    })
   }
 }

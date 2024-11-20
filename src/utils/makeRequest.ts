@@ -18,7 +18,7 @@ function makeUrlParameters(
   return urlParameters.toString()
 }
 
-export async function makeHttpClient(
+export async function makeRequest(
   url: string,
   { method, data, parameters }: requestOptions = {}
 ): Promise<any> {
