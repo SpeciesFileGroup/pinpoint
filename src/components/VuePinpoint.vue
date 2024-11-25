@@ -1,11 +1,16 @@
 <template>
-  <Couplet v-if="store.state.currentNode" />
+  <PreviousCouplets
+    v-if="currentNode?.parentId"
+    :node="currentNode"
+  />
+  <Couplet v-if="currentNode" />
 </template>
 
 <script setup lang="ts">
-import { ref, provide, watch } from 'vue'
+import { computed, ref, provide, watch } from 'vue'
 import { useKeyStore } from '@/store/key'
 import Couplet from './Couplet.vue'
+import PreviousCouplets from './PreviousCouplets.vue'
 
 type Props = {
   keyId: Number
@@ -15,6 +20,8 @@ type Props = {
 
 const props = defineProps<Props>()
 const store = useKeyStore(props)
+
+const currentNode = computed(() => store.state.currentNode)
 
 provide('store', store)
 
