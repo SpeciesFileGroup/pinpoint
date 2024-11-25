@@ -37,7 +37,7 @@ const store = inject('store')
 <style>
 .pinpoint-tree {
   padding: 0;
-  margin-left: 1rem;
+  list-style: none;
 }
 
 .pinpoint-tree {

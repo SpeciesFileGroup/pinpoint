@@ -1,20 +1,25 @@
 <template>
-  <div class="pinpoint-node">
+  <div class="pinpoint-node-container">
     <template v-if="node">
-      <button
-        type="button"
-        @click="() => (store.state.currentNode = node)"
-      >
-        Go
-      </button>
-      <p>{{ node.text }}</p>
-      <FigureList :figures="node.figures" />
-      <h3>Next</h3>
-      <VTree
-        v-for="child in node.children.map((id) => store.state.nodes[id])"
-        :couplet-number="node.coupletNumber"
-        :node="child"
-      />
+      <div class="pinpoint-node">
+        <button
+          type="button"
+          @click="() => (store.state.currentNode = node)"
+        >
+          Go
+        </button>
+
+        <p>{{ node.text }}</p>
+        <FigureList :figures="node.figures" />
+      </div>
+      <div v-if="node.children.length">
+        <h3>Next</h3>
+        <VTree
+          v-for="child in node.children.map((id) => store.state.nodes[id])"
+          :couplet-number="node.coupletNumber"
+          :node="child"
+        />
+      </div>
     </template>
   </div>
 </template>
@@ -35,6 +40,13 @@ const store = inject('store')
 </script>
 
 <style>
+.pinpoint-node-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+}
 .pinpoint-node {
   border: 1px solid black;
   padding: 1rem 2rem;
