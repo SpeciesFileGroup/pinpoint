@@ -1,7 +1,7 @@
 <template>
   <div>
     <img
-      src="https://picsum.photos/id/237/200/300"
+      :src="figure.image"
       class="pinpoint-figure"
       @click="() => (isModalVisible = !isModalVisible)"
     />
