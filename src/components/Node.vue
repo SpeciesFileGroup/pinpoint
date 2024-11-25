@@ -8,6 +8,7 @@
         Go
       </button>
       <p>{{ node.text }}</p>
+      <FigureList :figures="node.figures" />
       <h3>Next</h3>
       <VTree
         v-for="child in node.children.map((id) => store.state.nodes[id])"
@@ -19,15 +20,16 @@
 </template>
 
 <script setup lang="ts">
+import type { Node } from '@/types'
 import { inject } from 'vue'
 import VTree from './Tree.vue'
+import FigureList from './Figure/FigureList.vue'
 
-import type { Node } from '@/types'
 type Props = {
   node: Node
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 
 const store = inject('store')
 </script>

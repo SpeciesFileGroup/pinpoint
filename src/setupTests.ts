@@ -1,7 +1,7 @@
 import { beforeAll, afterEach, afterAll } from 'vitest'
 import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
-import { keyResponse } from './tests/mock/responses'
+import { keyResponse } from './mock/responses'
 
 export const restHandlers = [
   http.get('*/leads/key/:id', () => {
