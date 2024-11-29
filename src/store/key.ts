@@ -60,7 +60,7 @@ export function useKeyStore(config) {
   })
 
   const loadKey = (id: Number) => {
-    service.getDichotomousKey(id).then(({ data, metadata }) => {
+    return service.getDichotomousKey(id).then(({ data, metadata }) => {
       console.log(data)
       state.entries = makeEntries(data.entries)
       state.leads = makeLeads(data.leads)

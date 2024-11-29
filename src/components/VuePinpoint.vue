@@ -4,6 +4,7 @@
     :node="currentNode"
   />
   <Couplet v-if="currentNode" />
+  <div v-if="error">{{ error.message }}</div>
 </template>
 
 <script setup lang="ts">
@@ -20,8 +21,8 @@ type Props = {
 
 const props = defineProps<Props>()
 const store = useKeyStore(props)
-
 const currentNode = computed(() => store.state.currentNode)
+const error = ref(null)
 
 provide('store', store)
 
@@ -29,7 +30,10 @@ watch(
   () => props.keyId,
   () => {
     if (props.keyId) {
-      store.loadKey(props.keyId)
+      store.loadKey(props.keyId).catch((response) => {
+        console.log(response.message)
+        error.value = response
+      })
     }
   },
   {

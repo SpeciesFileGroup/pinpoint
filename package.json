@@ -15,12 +15,12 @@
   "devDependencies": {
     "@testing-library/user-event": "^14.5.2",
     "@testing-library/vue": "^8.1.0",
-    "@vitejs/plugin-vue": "^5.2.0",
+    "@vitejs/plugin-vue": "^5.2.1",
     "jsdom": "^25.0.1",
     "msw": "^2.6.6",
     "typescript": "~5.7.2",
-    "vite": "^5.4.11",
-    "vitest": "^2.1.5",
+    "vite": "^6.0.1",
+    "vitest": "^2.1.6",
     "vue-tsc": "^2.1.10"
   }
 }
