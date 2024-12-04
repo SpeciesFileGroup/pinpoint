@@ -35,6 +35,7 @@
 
       <button
         type="button"
+        :disabled="disabled"
         @click="() => emit('set', config)"
       >
         Load
@@ -47,6 +48,12 @@
 import { ref } from 'vue'
 
 const emit = defineEmits(['set'])
+const props = defineProps({
+  disabled: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const config = ref({
   /*   leadId: 103,

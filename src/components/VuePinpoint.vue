@@ -12,6 +12,7 @@ import { computed, ref, provide, watch } from 'vue'
 import { useKeyStore } from '@/store/key'
 import Couplet from './Couplet.vue'
 import PreviousCouplets from './PreviousCouplets.vue'
+import { EventNames } from '@/constants'
 
 type Props = {
   leadId: Number
@@ -20,6 +21,8 @@ type Props = {
 }
 
 const props = defineProps<Props>()
+const emit = defineEmits(Object.values(EventNames))
+
 const store = useKeyStore(props)
 const currentNode = computed(() => store.state.currentNode)
 const error = ref(null)
@@ -31,12 +34,20 @@ watch(
   () => {
     store.reset()
     store.setConfig(props)
+    error.value = null
+
     if (props.leadId && props.baseUrl && props.projectToken && props.baseUrl) {
-      console.log(props.baseUrl)
-      store.loadKey(props.leadId).catch((response) => {
-        console.log(response.message)
-        error.value = response
-      })
+      emit(EventNames.Start)
+      emit(EventNames.Loading)
+      store
+        .loadKey(props.leadId)
+        .then((response) => {
+          emit(EventNames.End, response)
+        })
+        .catch((response) => {
+          emit(EventNames.Error, response)
+          error.value = response
+        })
     }
   },
   {
