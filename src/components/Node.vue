@@ -3,6 +3,7 @@
     <template v-if="node">
       <div class="pinpoint-node">
         <button
+          v-if="node.children.length"
           type="button"
           @click="() => (store.state.currentNode = node)"
         >
