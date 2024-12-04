@@ -67,12 +67,5 @@ onUnmounted(() => {
   @media (min-width: 768px) {
     height: auto;
   }
-
-  @media (min-width: 640px) {
-    max-width: 640px;
-  }
-  @media (min-width: 768px) {
-    max-width: 768px;
-  }
 }
 </style>

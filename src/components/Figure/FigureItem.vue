@@ -10,7 +10,8 @@
       @close="() => (isModalVisible = false)"
     >
       <img
-        src="https://picsum.photos/id/237/200/300"
+        class="pinpoint-figure-image"
+        :src="figure.original"
         @click="() => (isModalVisible = true)"
       />
     </VModal>
@@ -38,5 +39,10 @@ const isModalVisible = ref<boolean>(false)
   object-fit: contain;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.pinpoint-figure-image {
+  max-width: 90vw;
+  max-height: 90vh;
 }
 </style>

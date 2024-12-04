@@ -14,7 +14,7 @@ import Couplet from './Couplet.vue'
 import PreviousCouplets from './PreviousCouplets.vue'
 
 type Props = {
-  keyId: Number
+  leadId: Number
   projectToken: String
   baseUrl: string
 }
@@ -27,10 +27,13 @@ const error = ref(null)
 provide('store', store)
 
 watch(
-  () => props.keyId,
+  [() => props.leadId, () => props.projectToken, () => props.baseUrl],
   () => {
-    if (props.keyId) {
-      store.loadKey(props.keyId).catch((response) => {
+    store.reset()
+    store.setConfig(props)
+    if (props.leadId && props.baseUrl && props.projectToken && props.baseUrl) {
+      console.log(props.baseUrl)
+      store.loadKey(props.leadId).catch((response) => {
         console.log(response.message)
         error.value = response
       })

@@ -1,11 +1,12 @@
 <template>
-  <VuePinpoint
-    :key-id="103"
-    base-url="http://localhost:3000/api/v1"
-    project-token="3oerVKf82_196cIECvHYNg"
-  />
+  <VuePinpoint v-bind="config" />
+  <DemoPanelAPI @set="(data) => (config = { ...data })" />
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import VuePinpoint from './components/VuePinpoint.vue'
+import DemoPanelAPI from './components/Demo/DemoPanelAPI.vue'
+
+const config = ref({})
 </script>

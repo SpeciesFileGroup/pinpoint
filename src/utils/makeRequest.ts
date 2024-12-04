@@ -34,7 +34,9 @@ export async function makeRequest(
     const response = await fetch(makeUrlParameters(url, parameters), options)
 
     if (!response.ok) {
-      throw new Error(`Error response: ${response.statusText}`)
+      throw new Error(
+        `Error response: ${response.status} ${response.statusText}`
+      )
     }
 
     const datosRespuesta = await response.json()

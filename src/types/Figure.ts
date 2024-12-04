@@ -3,4 +3,5 @@ export type Figure = {
   label: string | null
   position: number
   image: string
+  original: string
 }
