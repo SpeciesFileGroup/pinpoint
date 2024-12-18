@@ -11,6 +11,7 @@
         </button>
 
         <p>{{ node.text }}</p>
+        <p v-if="isNaN(node.targetLabel)">{{ node.targetLabel }}</p>
         <FigureList :figures="node.figures" />
       </div>
       <div v-if="node.children.length">

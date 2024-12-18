@@ -5,6 +5,7 @@ export type Lead = {
   parentId: Number | null
   position: Number | null
   targetType: String
+  targetLabel: String
   targetId: Number
   figures: Figure[]
 }

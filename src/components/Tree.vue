@@ -1,13 +1,10 @@
 <template>
   <ul class="pinpoint-tree">
     <li>
+      <span @click="() => store.setCurrentNode(node.parentId)">
       [{{ coupletNumber }}]
-      <span
-        @click="() => store.setCurrentNode(node.parentId)"
-        v-html="node.text"
-      />
-      [id: {{ node.id }}]
-
+      <span v-html="node.text"/> <span v-if="isNaN(node.targetLabel)">[{{ node.targetLabel }}]</span>
+      </span>
       <template v-for="id in node.children">
         <VTree
           v-if="store.state.nodes[id]"
