@@ -17,8 +17,7 @@
       <p>{{ store.state.currentNode.text }}</p>
     </div>
     <div class="pinpoint-couplet-children-container">
-      <Node :node="side.left" />
-      <Node :node="side.right" />
+      <Node v-for="node in nodes" :node="node" />
     </div>
   </div>
 </template>
@@ -28,23 +27,18 @@ import { inject, watch, ref, computed } from 'vue'
 import Node from './Node.vue'
 
 const store = inject('store')
-const left = ref(null)
-const right = ref(null)
 
-const side = computed(() => {
-  const [leftId, rightId] = store.state.currentNode.children
+const nodes = computed(() => {
+  const ids = store.state.currentNode.children
 
-  return {
-    left: store.state.nodes[leftId],
-    right: store.state.nodes[rightId]
-  }
+  return ids.map(id => store.state.nodes[id])
 })
 </script>
 
 <style>
 .pinpoint-couplet-children-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 2rem;
 }
 </style>
