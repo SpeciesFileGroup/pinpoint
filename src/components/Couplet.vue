@@ -17,7 +17,11 @@
       <p>{{ store.state.currentNode.text }}</p>
     </div>
     <div class="pinpoint-couplet-children-container">
-      <Node v-for="node in nodes" :node="node" />
+      <Node
+        v-for="node in nodes"
+        :node="node"
+        :key="node.id"
+      />
     </div>
   </div>
 </template>
@@ -31,7 +35,7 @@ const store = inject('store')
 const nodes = computed(() => {
   const ids = store.state.currentNode.children
 
-  return ids.map(id => store.state.nodes[id])
+  return ids.map((id) => store.state.nodes[id])
 })
 </script>
 
