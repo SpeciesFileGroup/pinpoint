@@ -1,18 +1,20 @@
 <template>
-  <PreviousCouplets
-    v-if="currentNode?.parentId"
-    :node="currentNode"
-  />
-  <Couplet v-if="currentNode">
-    <template #target="{ id, label }">
-      <slot
-        name="target"
-        :label="label"
-        :id="id"
-      />
-    </template>
-  </Couplet>
-  <div v-if="error">{{ error.message }}</div>
+  <div class="pinpoint-app">
+    <PreviousCouplets
+      v-if="currentNode?.parentId"
+      :node="currentNode"
+    />
+    <Couplet v-if="currentNode">
+      <template #target="{ id, label }">
+        <slot
+          name="target"
+          :label="label"
+          :id="id"
+        />
+      </template>
+    </Couplet>
+    <div v-if="error">{{ error.message }}</div>
+  </div>
 </template>
 
 <script setup lang="ts">

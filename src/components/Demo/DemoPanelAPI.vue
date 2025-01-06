@@ -56,9 +56,9 @@ const props = defineProps({
 })
 
 const config = ref({
-  /*   leadId: 103,
-  baseUrl: 'https://sfg.taxonworks.org/api/v1',
-  projectToken: '3oerVKf82_196cIECvHYNg' */
+  leadId: 103,
+  baseUrl: 'http://localhost:3000/api/v1',
+  projectToken: '3oerVKf82_196cIECvHYNg'
 })
 const isVisible = ref(true)
 

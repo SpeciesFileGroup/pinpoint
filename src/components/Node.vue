@@ -4,6 +4,7 @@
       <div class="pinpoint-node">
         <button
           v-if="node.children.length"
+          class="pinpoint-button-go"
           type="button"
           @click="() => (store.state.currentNode = node)"
         >

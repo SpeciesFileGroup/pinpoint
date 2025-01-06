@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="pinpoint-couplet">
     <button
       v-if="store.state.currentNode.parentId"
+      class="pinpoint-button-up"
       type="button"
       @click="
         () =>
