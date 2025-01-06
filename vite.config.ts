@@ -20,5 +20,25 @@ export default defineConfig(({ mode }) => {
     }
   }
 
+  if (mode === 'lib') {
+    Object.assign(config, {
+      build: {
+        lib: {
+          entry: path.resolve(__dirname, 'src/lib/main.ts'),
+          name: 'pinpoint',
+          fileName: 'pinpoint'
+        },
+        rollupOptions: {
+          external: ['vue'],
+          output: {
+            globals: {
+              vue: 'Vue'
+            }
+          }
+        }
+      }
+    })
+  }
+
   return config
 })
