@@ -2,8 +2,8 @@
   <ul class="pinpoint-tree">
     <li>
       <span @click="() => store.setCurrentNode(node.parentId)">
-      [{{ coupletNumber }}]
-      <span v-html="node.text"/> <span v-if="isNaN(node.targetLabel)">[{{ node.targetLabel }}]</span>
+        [{{ coupletNumber }}] <span v-html="node.text" />
+        <span v-if="isNaN(node.targetLabel)">[{{ node.targetLabel }}]</span>
       </span>
       <template v-for="id in node.children">
         <VTree
@@ -23,7 +23,7 @@ import type { Node } from '@/types'
 
 type Props = {
   node: Node
-  coupletNumber: string
+  coupletNumber: string | number
 }
 
 defineProps<Props>()

@@ -10,8 +10,20 @@
           Go
         </button>
 
-        <p>{{ node.text }}</p>
-        <p v-if="isNaN(node.targetLabel)">{{ node.targetLabel }}</p>
+        <p class="pinpoint-node-text">{{ node.text }}</p>
+        <p
+          v-if="isNaN(node.targetLabel)"
+          class="pinpoint-node-target"
+        >
+          <slot
+            name="target"
+            :label="node.targetLabel"
+            :id="node.targetId"
+          >
+            {{ node.targetLabel }}
+          </slot>
+        </p>
+
         <FigureList :figures="node.figures" />
       </div>
       <div v-if="node.children.length">
@@ -45,7 +57,6 @@ const store = inject('store')
 .pinpoint-node-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border: 1px solid black;
   padding: 1rem 2rem;
 }

@@ -21,7 +21,15 @@
         v-for="node in nodes"
         :node="node"
         :key="node.id"
-      />
+      >
+        <template #target="{ id, label }">
+          <slot
+            name="target"
+            :id="id"
+            :label="label"
+          />
+        </template>
+      </Node>
     </div>
   </div>
 </template>
