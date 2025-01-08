@@ -1,21 +1,25 @@
 <template>
   <div class="pinpoint-couplet">
-    <button
-      v-if="store.state.currentNode.parentId"
-      class="pinpoint-button-up"
-      type="button"
-      @click="
-        () =>
-          (store.state.currentNode =
-            store.state.nodes[store.state.currentNode.parentId])
-      "
-    >
-      Up
-    </button>
-    <h1>Couplet {{ store.state.currentNode.coupletNumber }}</h1>
+    <div class="pinpoint-couplet-container">
+      <button
+        v-if="store.state.currentNode.parentId"
+        class="pinpoint-button-up"
+        type="button"
+        @click="
+          () =>
+            (store.state.currentNode =
+              store.state.nodes[store.state.currentNode.parentId])
+        "
+      >
+        Up
+      </button>
+      <div class="pinpoint-couplet-node">
+        <h1>Couplet {{ store.state.currentNode.coupletNumber }}</h1>
 
-    <div>
-      <p>{{ store.state.currentNode.text }}</p>
+        <div>
+          <p>{{ store.state.currentNode.text }}</p>
+        </div>
+      </div>
     </div>
     <div class="pinpoint-couplet-children-container">
       <Node
