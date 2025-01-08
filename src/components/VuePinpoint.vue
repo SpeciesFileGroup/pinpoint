@@ -20,6 +20,9 @@
           :id="id"
         />
       </template>
+      <template #button-up-label>
+        <slot name="button-up-label" />
+      </template>
     </Couplet>
     <div v-if="error">{{ error.message }}</div>
   </div>

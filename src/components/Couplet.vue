@@ -10,7 +10,7 @@
             (store.state.currentNode = store.state.nodes[currentNode.parentId])
         "
       >
-        Up
+        <slot name="button-up-label">Up</slot>
       </button>
       <div class="pinpoint-couplet-node">
         <h1 v-if="currentNode.parentId">
