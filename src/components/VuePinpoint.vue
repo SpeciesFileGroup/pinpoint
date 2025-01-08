@@ -1,9 +1,13 @@
 <template>
   <div class="pinpoint-app">
-    <div class="pinpoint-key-title">
+    <div
+      class="pinpoint-key-title"
+      v-if="store.state.metadata"
+    >
       <slot
         name="title"
         :title="store.state.metadata.title"
+        :metadata="store.state.metadata"
       >
         {{ store.state.metadata.title }}
       </slot>
@@ -75,4 +79,8 @@ watch(
     immediate: true
   }
 )
+
+defineExpose({
+  getState: () => store.state
+})
 </script>
