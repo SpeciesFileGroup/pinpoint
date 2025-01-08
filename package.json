@@ -1,7 +1,7 @@
 {
   "name": "@sfgrp/pinpoint",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "dist"
   ],
@@ -12,7 +12,8 @@
     ".": {
       "import": "./dist/pinpoint.js",
       "require": "./dist/pinpoint.umd.cjs"
-    }
+    },
+    "./dist/pinpoint.css": "./dist/pinpoint.css"
   },
   "publishConfig": {
     "access": "public"
