@@ -7,18 +7,28 @@
         type="button"
         @click="
           () =>
-            (store.state.currentNode =
-              store.state.nodes[store.state.currentNode.parentId])
+            (store.state.currentNode = store.state.nodes[currentNode.parentId])
         "
       >
         Up
       </button>
       <div class="pinpoint-couplet-node">
-        <h1>Couplet {{ store.state.currentNode.coupletNumber }}</h1>
+        <h1 v-if="currentNode.parentId">
+          Couplet {{ currentNode.coupletNumber }}
+        </h1>
 
-        <div>
-          <p>{{ store.state.currentNode.text }}</p>
-        </div>
+        <p
+          v-if="isNaN(currentNode.targetLabel) && !currentNode.parentId"
+          class="pinpoint-node-target"
+        >
+          <slot
+            name="target"
+            :label="currentNode.targetLabel"
+            :id="currentNode.targetId"
+          >
+            {{ currentNode.targetLabel }}
+          </slot>
+        </p>
       </div>
     </div>
     <div class="pinpoint-couplet-children-container">
@@ -45,6 +55,7 @@ import Node from './Node.vue'
 
 const store = inject('store')
 
+const currentNode = computed(() => store.state.currentNode)
 const nodes = computed(() => {
   const ids = store.state.currentNode.children
 

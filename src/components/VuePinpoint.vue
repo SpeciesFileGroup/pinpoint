@@ -1,5 +1,13 @@
 <template>
   <div class="pinpoint-app">
+    <div class="pinpoint-key-title">
+      <slot
+        name="title"
+        :title="store.state.metadata.title"
+      >
+        {{ store.state.metadata.title }}
+      </slot>
+    </div>
     <PreviousCouplets
       v-if="currentNode?.parentId"
       :node="currentNode"

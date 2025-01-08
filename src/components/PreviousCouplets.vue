@@ -17,12 +17,11 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-
 const store = inject('store')
 
 const previousCouplets = computed(() => {
   const parents = []
-  let parentId = props.node.parentId
+  let parentId = props.node.id
 
   while (parentId !== null) {
     const parent = store.state.nodes[parentId]
@@ -30,6 +29,8 @@ const previousCouplets = computed(() => {
     parentId = parent.parentId
     parents.push(parent)
   }
+
+  parents.splice(-1, 1)
 
   return parents.reverse()
 })
