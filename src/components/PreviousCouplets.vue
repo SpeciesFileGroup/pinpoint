@@ -1,7 +1,9 @@
 <template>
   <div class="pinpoint-previous-couplets">
     <h2>Previous couplets</h2>
-    <PreviousList :nodes="previousCouplets" />
+    <div class="pinpoint-previous-list">
+      <PreviousList :nodes="previousCouplets" />
+    </div>
   </div>
 </template>
 
