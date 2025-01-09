@@ -27,11 +27,11 @@ const previousCouplets = computed(() => {
     const parent = store.state.nodes[parentId]
 
     parentId = parent.parentId
-    parents.push(parent)
+    parents.unshift(parent)
   }
 
-  parents.splice(-1, 1)
+  parents.splice(0, 1)
 
-  return parents.reverse()
+  return parents
 })
 </script>

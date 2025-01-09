@@ -4,7 +4,8 @@
       <span
         class="pinpoint-previous-list-item"
         @click="() => store.setCurrentNode(nodes[0].parentId)"
-        >[{{ nodes[0].coupletNumber - 1 }}] {{ nodes[0].text }}</span
+        >[{{ getCoupletNumber(nodes[0].coupletNumber) }}]
+        {{ nodes[0].text }}</span
       >
       <PreviousList :nodes="nodes.slice(1)" />
     </li>
@@ -15,6 +16,7 @@
 import { inject } from 'vue'
 import type { Node } from '@/types'
 import PreviousList from './PreviousList.vue'
+import { getCoupletNumber } from '@/utils'
 
 type Props = {
   nodes: Node[]
