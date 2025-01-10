@@ -39,7 +39,7 @@
               store.setCurrentNode(store.state.nodes[node.children[0]].parentId)
             "
           >
-            Next
+            <slot name="button-next-label"> Next </slot>
           </button>
         </div>
         <VTree

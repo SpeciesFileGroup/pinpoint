@@ -44,6 +44,10 @@
             :label="label"
           />
         </template>
+
+        <template #button-next-label>
+          <slot name="button-next-label" />
+        </template>
       </Node>
     </div>
   </div>

@@ -27,6 +27,9 @@
       <template #button-up-label>
         <slot name="button-up-label" />
       </template>
+      <template #button-next-label>
+        <slot name="button-next-label" />
+      </template>
     </Couplet>
     <div v-if="error">{{ error.message }}</div>
   </div>
