@@ -27,8 +27,21 @@
 
         <FigureList :figures="node.figures" />
       </div>
-      <div v-if="node.children.length">
-        <h3>Next</h3>
+      <div
+        v-if="node.children.length"
+        class="pinpoint-node-children-container"
+      >
+        <div class="pinpoint-node-next-container">
+          <button
+            class="pinpoint-node-next-button"
+            type="button"
+            @click="
+              store.setCurrentNode(store.state.nodes[node.children[0]].parentId)
+            "
+          >
+            Next
+          </button>
+        </div>
         <VTree
           v-for="child in node.children.map((id) => store.state.nodes[id])"
           :couplet-number="node.coupletNumber"
